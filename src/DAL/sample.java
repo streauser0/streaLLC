@@ -10,7 +10,7 @@ public class sample {
        List<Company> companies = x.getAllCompanies();
        for(Company c : companies){
     
-//Todo: Move to ToString and review next time
+//Todo: Move to ToString and review next time. Discuss factory pattern and list vs arraylist :)
             System.out.println("\n" + c.getSymbol() + "\t" + c.getName() + "\t\t" + c.getDescription()+ "\n");
             
         }
