@@ -1,3 +1,5 @@
+package DAL;
+
 import org.w3c.dom.NameList;
 
 public class Company {
@@ -5,7 +7,10 @@ public class Company {
   
         private String symbol, name, description;
      
-       
+       Company(){}
+
+
+
         Company(String symbol, String name, String description){
          this.symbol = symbol;
          this.name = name;

@@ -1,6 +1,13 @@
+package DAL;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
+
+
 
 public class CompanyDaoImpl implements CompanyDao {
 
@@ -24,7 +31,6 @@ public class CompanyDaoImpl implements CompanyDao {
                 System.out.println("Exception: " + e.getMessage());
             }
         }
-
     }
 
     public static CompanyDaoImpl getInstance() {
@@ -40,9 +46,28 @@ public class CompanyDaoImpl implements CompanyDao {
     @Override
     public List<Company> getAllCompanies() {
         
-        return null;
-    }
+        List<Company> companies = new ArrayList<Company>();
+        try{
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("select * from company");
+            
+            while(rs.next())
+            {
+                Company c = new Company();
+                c.setDescription(rs.getString("Description"));
+                c.setName(rs.getString("Name"));
+                c.setSymbol(rs.getString("Symbol"));
 
+               companies.add(c);
+            }
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+            }
+    return companies;
+    }
+    
     @Override
     public Company getCompany(String symbol) {
         // TODO Auto-generated method stub
