@@ -14,11 +14,14 @@ public class sample {
         }
 
         SummaryDao sd = SummaryDaoImpl.getInstance();
-        List<Summary> summaries = sd.getAllSummaries("CVX");
+        List<Summary> summaries = sd.getAllSummaries("RIG");
         for(Summary s : summaries){
      
  //Todo: Move to ToString and review next time. Discuss factory pattern and list vs arraylist :)
-             System.out.println("\n" + s.getSymbol() + "\n");
+             System.out.print("\n" + s.getSymbol() + "  ");
+             System.out.print(s.getFiftyTwoWeekHigh() + "  ");
+             System.out.print(s.getFiftyTwoWeekLow() + "  ");
+             System.out.print(s.getPe() + "  ");
              
          }
     }

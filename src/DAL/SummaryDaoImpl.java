@@ -45,8 +45,12 @@ public class SummaryDaoImpl implements SummaryDao {
             {
                 Summary c = new Summary();
                 c.setSymbol(rs.getString("Symbol"));
+                c.setFiftyTwoWeekHigh(rs.getDouble("FiftyTwoWeekHigh"));
+                c.setFiftyTwoWeekLow(rs.getDouble("FiftyTwoWeekLow"));
+                c.setPe(rs.getDouble("PE"));
 //TODO: Implement other values
                summaries.add(c);
+
             }
             
         }
