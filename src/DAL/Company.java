@@ -1,7 +1,3 @@
-package DAL;
-
-import org.w3c.dom.NameList;
-
 public class Company {
     
   

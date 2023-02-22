@@ -1,18 +1,17 @@
-import java.util.ArrayList;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
+public class SummaryDaoImpl implements SummaryDao {
 
-
-public class CompanyDaoImpl implements CompanyDao {
-
-    private static CompanyDaoImpl instance = new CompanyDaoImpl();
+    private static SummaryDaoImpl instance = new SummaryDaoImpl();
     private Connection conn = null;
 
-    private CompanyDaoImpl() {
+    private SummaryDaoImpl() {
 
         if (instance == null) {
             try {
@@ -31,49 +30,43 @@ public class CompanyDaoImpl implements CompanyDao {
         }
     }
 
-    public static CompanyDaoImpl getInstance() {
+    public static SummaryDaoImpl getInstance() {
         return instance;
     }
 
-    @Override
-    public void deleteCompany(Company company) {
-        // TODO Auto-generated method stub
+    public List<Summary> getAllSummaries(String symbol) {
         
-    }
-
-    @Override
-    public List<Company> getAllCompanies() {
-        
-        List<Company> companies = new ArrayList<Company>();
+        List<Summary> summaries = new ArrayList<Summary>();
         try{
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("select * from company");
+            ResultSet rs = s.executeQuery("select * from summary where symbol = '" + symbol + "'");
             
             while(rs.next())
             {
-                Company c = new Company();
-                c.setDescription(rs.getString("Description"));
-                c.setName(rs.getString("Name"));
+                Summary c = new Summary();
                 c.setSymbol(rs.getString("Symbol"));
-
-               companies.add(c);
+//TODO: Implement other values
+               summaries.add(c);
             }
             
         }
         catch(Exception e){
             System.out.println(e);
             }
-    return companies;
+    return summaries;
     }
-    
-    @Override
-    public Company getCompany(String symbol) {
+
+    public Summary getSummary(String symbol, Timestamp timestamp) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @Override
-    public void updateCompany(Company company) {
+    public void updateSummary(Summary summary) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    public void deleteSummary(Summary summary) {
         // TODO Auto-generated method stub
         
     }
