@@ -9,12 +9,12 @@ public class sample {
        for(Company c : companies){
     
 //Todo: Move to ToString and review next time. Discuss factory pattern and list vs arraylist :)
-            System.out.println("\n" + c.getSymbol() + "\t" + c.getName() + "\t\t" + c.getDescription()+ "\n");
+            System.out.println(c);
             
         }
 
         SummaryDao sd = SummaryDaoImpl.getInstance();
-        List<Summary> summaries = sd.getAllSummaries("RIG");
+        List<Summary> summaries = sd.getAllSummaries("CVX");
         for(Summary s : summaries){
         System.out.println(s);
 

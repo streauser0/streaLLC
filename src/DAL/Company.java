@@ -37,4 +37,16 @@ public class Company {
             this.description = description;
         }
 
+
+        @Override
+        public String toString() {
+            //return "Company [symbol=" + symbol + ", name=" + name + ", description=" + description + "]";
+
+           String result = getSymbol() + "\t" + getName() + "\t" + getDescription();
+           return result;
+
+
+        }
+
+        
 }
