@@ -6,7 +6,7 @@ public class Summary {
 
     Summary(){}
 
-
+    //todo: implement timestamp
 
     Summary(int id, String symbol, double fiftyTwoWeekHigh,
      double fiftyTwoWeekLow, double pe) {
@@ -76,5 +76,19 @@ public class Summary {
     public void setPe(double pe) {
         this.pe = pe;
     }
+
+
+   
+
+    @Override
+    public String toString() {
+        //return "Summary [id=" + id + ", symbol=" + symbol + ", fiftyTwoWeekHigh=" + fiftyTwoWeekHigh
+          //      + ", fiftyTwoWeekLow=" + fiftyTwoWeekLow + ", pe=" + pe + "]";
+
+        String result =  getSymbol() + "  " + getFiftyTwoWeekHigh() + "  " + getFiftyTwoWeekLow() + "  " + getPe();
+        return result;
+    }
+
+    
 
 }
