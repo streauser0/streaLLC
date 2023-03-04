@@ -16,10 +16,16 @@ public class sample {
         SummaryDao sd = SummaryDaoImpl.getInstance();
         List<Summary> summaries = sd.getAllSummaries("CVX");
         for(Summary s : summaries){
-        System.out.println(s);
-
-          
+        System.out.println(s); 
              
          }
+        
+
+        System.out.println("--------------------------");
+        Company newCompany = x.getCompany("CVX");
+        if (newCompany.getSymbol() != null)
+            System.out.println(newCompany);
+        else
+            System.out.println("Company not found."); 
     }
 }

@@ -35,13 +35,11 @@ public class CompanyDaoImpl implements CompanyDao {
         return instance;
     }
 
-    @Override
     public void deleteCompany(Company company) {
         // TODO Auto-generated method stub
         
     }
 
-    @Override
     public List<Company> getAllCompanies() {
         
         List<Company> companies = new ArrayList<Company>();
@@ -66,13 +64,26 @@ public class CompanyDaoImpl implements CompanyDao {
     return companies;
     }
     
-    @Override
     public Company getCompany(String symbol) {
-        // TODO Auto-generated method stub
-        return null;
+        Company c = new Company();
+        try{
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("select * from company " +
+                                          "where symbol='" + symbol + "'");
+
+            if(rs.next())
+            {
+                c.setDescription(rs.getString("Description"));
+                c.setName(rs.getString("Name"));
+                c.setSymbol(rs.getString("Symbol"));
+            }            
+        }
+        catch(Exception e){
+            System.out.println(e);
+            }
+    return c;
     }
 
-    @Override
     public void updateCompany(Company company) {
         // TODO Auto-generated method stub
         
