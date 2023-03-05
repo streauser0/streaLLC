@@ -35,8 +35,20 @@ public class CompanyDaoImpl implements CompanyDao {
         return instance;
     }
 
-    public void deleteCompany(Company company) {
-        // TODO Auto-generated method stub
+    public boolean deleteCompany(String symbol) {
+        // delete from company where Symbol = 'MNM';
+        boolean result = true;
+        try{
+            Statement s = conn.createStatement();
+          int value = s.executeUpdate("delete from company where Symbol = '"+symbol+"'");
+          if(value == 0){
+            result = false;
+          }
+        }
+        catch(Exception e){
+            System.out.println(e);
+            }
+    return result;
         
     }
 

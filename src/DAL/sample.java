@@ -5,6 +5,13 @@ public class sample {
     public static void main(String[] args) {
         
         CompanyDao x = CompanyDaoImpl.getInstance();
+        String symbol = "MNM";
+        boolean value = x.deleteCompany(symbol);
+        if(value == false)
+             System.out.println("Unable to find "+symbol);
+        else
+             System.out.println(symbol+" Deleted");
+
        List<Company> companies = x.getAllCompanies();
        for(Company c : companies){
     
@@ -28,4 +35,5 @@ public class sample {
         else
             System.out.println("Company not found."); 
     }
+
 }
