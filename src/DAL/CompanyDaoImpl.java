@@ -100,5 +100,25 @@ public class CompanyDaoImpl implements CompanyDao {
         // TODO Auto-generated method stub
         
     }
+
+    @Override
+    public boolean addCompany(Company company) {
+        /*
+        INSERT INTO company (Symbol, name, Description)
+        VALUES ('MNM', 'CANDY COMPANY', 'Chocolate');
+        */
+        boolean result = false;
+        try{
+            Statement s = conn.createStatement();
+            s.executeUpdate("INSERT INTO company (Symbol, name, Description) VALUES ('"+company.getSymbol()+
+                                        "', '"+company.getName()+"', '"+company.getDescription()+"')");
+            result = true;
+        }
+        catch(Exception e){
+            System.out.println(e);
+            }
+    return result;
+    
+    }
     
 }

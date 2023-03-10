@@ -4,15 +4,15 @@ public class sample {
 
     public static void main(String[] args) {
         
-        CompanyDao x = CompanyDaoImpl.getInstance();
+        CompanyDao cd = CompanyDaoImpl.getInstance();
         String symbol = "MNM";
-        boolean value = x.deleteCompany(symbol);
+        /*boolean value = cd.deleteCompany(symbol);
         if(value == false)
              System.out.println("Unable to find "+symbol);
         else
-             System.out.println(symbol+" Deleted");
+             System.out.println(symbol+" Deleted");*/
 
-       List<Company> companies = x.getAllCompanies();
+       List<Company> companies = cd.getAllCompanies();
        for(Company c : companies){
     
 //Todo: Move to ToString and review next time. Discuss factory pattern and list vs arraylist :)
@@ -29,11 +29,15 @@ public class sample {
         
 
         System.out.println("--------------------------");
-        Company newCompany = x.getCompany("CVX");
+        Company newCompany = cd.getCompany("CVX");
         if (newCompany.getSymbol() != null)
             System.out.println(newCompany);
         else
             System.out.println("Company not found."); 
+
+         Company c = new Company("MNM", "Mars", "A candy company corp");
+         cd.addCompany(c);
     }
+
 
 }
