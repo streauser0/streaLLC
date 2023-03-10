@@ -10,7 +10,7 @@ CREATE TABLE Company (
 );
 
 CREATE TABLE Summary (
-    Id int NOT NULL,
+    Id int NOT NULL AUTO_INCREMENT,
     Symbol varchar(255) NOT NULL,
     FiftyTwoWeekHigh DECIMAL(8, 2),
 	FiftyTwoWeekLow DECIMAL(8, 2),

@@ -60,9 +60,26 @@ public class SummaryDaoImpl implements SummaryDao {
     return summaries;
     }
 
-    public Summary getSummary(String symbol, Timestamp timestamp) {
-        // TODO Auto-generated method stub
-        return null;
+    public Summary getSummary(int id) {
+       Summary sum = new Summary(); 
+        try{
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("select * from summary " +
+                                          "where Id ='" + id + "'");
+
+            if(rs.next())
+            {
+                sum.setId(rs.getInt("Id"));
+                sum.setSymbol(rs.getString("Symbol"));
+                sum.setFiftyTwoWeekHigh(rs.getDouble("FiftyTwoWeekHigh"));
+                sum.setFiftyTwoWeekLow(rs.getDouble("FiftyTwoWeekLow"));
+                sum.setPe(rs.getDouble("PE"));
+            }            
+        }
+        catch(Exception e){
+            System.out.println(e);
+            }
+    return sum;
     }
 
     public void updateSummary(Summary summary) {
@@ -70,9 +87,27 @@ public class SummaryDaoImpl implements SummaryDao {
         
     }
 
-    public void deleteSummary(Summary summary) {
-        // TODO Auto-generated method stub
+    public boolean deleteSummary(int id) {
+       //Delete from summary where Id = id
+         boolean result = false;
+         try{
+             Statement s = conn.createStatement();
+           int value = s.executeUpdate("delete from summary where Id = '"+id+"'");
+           if(value != 0){
+             result = true;
+           }
+         }
+         catch(Exception e){
+             System.out.println(e);
+             }
+     return result;
         
     }
+
+    @Override
+    public boolean addSummary(Summary summary) {
+        // TODO Auto-generated method stub
+        return false;
+    }    
     
 }

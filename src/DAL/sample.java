@@ -37,7 +37,18 @@ public class sample {
 
          Company c = new Company("MNM", "Mars", "A candy company corp");
          cd.addCompany(c);
+
+         Summary summary = sd.getSummary(5);
+         System.out.println(summary);
+         
+
+         sd.deleteSummary(5);
+
+         summary = sd.getSummary(5);
+         System.out.println(summary);
     }
+
+   
 
 
 }

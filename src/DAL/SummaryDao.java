@@ -4,8 +4,9 @@ import java.util.List;
 public interface SummaryDao {
 //Instance methods
    public List<Summary> getAllSummaries(String symbol);
-   public Summary getSummary(String symbol, Timestamp timestamp);
+   public Summary getSummary(int id);
    public void updateSummary(Summary summary);
-   public void deleteSummary(Summary summary);
+   public boolean deleteSummary(int id);
+   public boolean addSummary(Summary summary);
 
 }
