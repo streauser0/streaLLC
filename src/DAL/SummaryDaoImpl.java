@@ -44,13 +44,13 @@ public class SummaryDaoImpl implements SummaryDao {
             while(rs.next())
             {
                 Summary c = new Summary();
+                c.setId(rs.getInt("id"));
                 c.setSymbol(rs.getString("Symbol"));
                 c.setFiftyTwoWeekHigh(rs.getDouble("FiftyTwoWeekHigh"));
                 c.setFiftyTwoWeekLow(rs.getDouble("FiftyTwoWeekLow"));
                 c.setPe(rs.getDouble("PE"));
-//TODO: Implement other values
-               summaries.add(c);
 
+               summaries.add(c);
             }
             
         }
@@ -106,8 +106,27 @@ public class SummaryDaoImpl implements SummaryDao {
 
     @Override
     public boolean addSummary(Summary summary) {
-        // TODO Auto-generated method stub
-        return false;
-    }    
+
+        /*
+        INSERT INTO Summary ( Symbol, FiftyTwoWeekHigh, FiftytwoWeekLow, PE)   
+        VALUES ( 'RIG', 159.68, 123.84, 18.08);
+        */
+        boolean result = false;
+        try{
+            Statement s = conn.createStatement();
+            s.executeUpdate("INSERT INTO Summary (Symbol, FiftyTwoWeekHigh, FiftytwoWeekLow, PE)" +
+            "VALUES (" +
+            "'" + summary.getSymbol() + "'," +
+                  summary.getFiftyTwoWeekHigh() + "," +
+                  summary.getFiftyTwoWeekLow() + "," +
+                  summary.getPe() + ")");
+            result = true;
+        }
+        catch(Exception e){
+            System.out.println(e);
+            }
+    return result;
+
+    }  
     
 }

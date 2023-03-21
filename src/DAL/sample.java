@@ -6,11 +6,11 @@ public class sample {
         
         CompanyDao cd = CompanyDaoImpl.getInstance();
         String symbol = "MNM";
-        /*boolean value = cd.deleteCompany(symbol);
+        boolean value = cd.deleteCompany(symbol);
         if(value == false)
              System.out.println("Unable to find "+symbol);
         else
-             System.out.println(symbol+" Deleted");*/
+             System.out.println(symbol+" Deleted");
 
        List<Company> companies = cd.getAllCompanies();
        for(Company c : companies){
@@ -21,6 +21,11 @@ public class sample {
         }
 
         SummaryDao sd = SummaryDaoImpl.getInstance();
+
+        Summary s2 = new Summary(0, "CVX", 150, 140, 20);
+
+        sd.addSummary(s2);
+
         List<Summary> summaries = sd.getAllSummaries("CVX");
         for(Summary s : summaries){
         System.out.println(s); 

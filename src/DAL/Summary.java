@@ -85,7 +85,7 @@ public class Summary {
         //return "Summary [id=" + id + ", symbol=" + symbol + ", fiftyTwoWeekHigh=" + fiftyTwoWeekHigh
           //      + ", fiftyTwoWeekLow=" + fiftyTwoWeekLow + ", pe=" + pe + "]";
 
-        String result =  getSymbol() + "  " + getFiftyTwoWeekHigh() + "  " + getFiftyTwoWeekLow() + "  " + getPe();
+        String result = getId() + "  " + getSymbol() + "  " + getFiftyTwoWeekHigh() + "  " + getFiftyTwoWeekLow() + "  " + getPe();
         return result;
     }
 
