@@ -96,9 +96,22 @@ public class CompanyDaoImpl implements CompanyDao {
     return c;
     }
 
-    public void updateCompany(Company company) {
-        // TODO Auto-generated method stub
-        
+    public boolean updateCompany(Company company) {
+        // UPDATE company
+        // SET Name = 'Transocean', Description = 'Small deep sea oil drilling company'
+        // WHERE Symbol = 'RIG';
+        boolean result = false;
+        try{
+            Statement s = conn.createStatement();
+            s.executeUpdate("UPDATE company SET Name = '" + company.getName() + 
+                            "', Description = '" + company.getDescription() + 
+                            "' WHERE Symbol = '" + company.getSymbol() + "';");
+            result = true;
+        }
+        catch(Exception e){
+            System.out.println(e);
+            }
+    return result;
     }
 
     @Override

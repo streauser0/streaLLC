@@ -5,6 +5,13 @@ public class sample {
     public static void main(String[] args) {
         
         CompanyDao cd = CompanyDaoImpl.getInstance();
+
+        Company companyOne = new Company();
+        companyOne.setName("Transocean Ltd");
+        companyOne.setDescription("Large deep sea oil drilling company");
+        companyOne.setSymbol("RIG");
+        cd.updateCompany(companyOne);
+
         String symbol = "MNM";
         boolean value = cd.deleteCompany(symbol);
         if(value == false)

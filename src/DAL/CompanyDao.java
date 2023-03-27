@@ -5,7 +5,7 @@ public interface CompanyDao {
    public List<Company> getAllCompanies();
    public boolean addCompany(Company company);
    public Company getCompany(String symbol);
-   public void updateCompany(Company company);
+   public boolean updateCompany(Company company);
    public boolean deleteCompany(String symbol);
 
 }
