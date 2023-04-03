@@ -82,8 +82,24 @@ public class SummaryDaoImpl implements SummaryDao {
     return sum;
     }
 
-    public void updateSummary(Summary summary) {
-        // TODO Auto-generated method stub
+    public boolean updateSummary(Summary summary) {
+      
+        boolean result = false;
+        try{
+            Statement s = conn.createStatement();
+           
+            String query = "UPDATE summary SET pe = " + summary.getPe() + 
+            ", FiftyTwoWeekHigh = " + summary.getFiftyTwoWeekHigh() +
+            ", FiftyTwoWeekLow = " + summary.getFiftyTwoWeekLow() +
+            " where id = " + summary.getId() + ";";
+
+            s.executeUpdate(query);
+            result = true;
+        }
+        catch(Exception e){
+            System.out.println(e);
+            }
+    return result;
         
     }
 

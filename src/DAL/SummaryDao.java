@@ -5,7 +5,7 @@ public interface SummaryDao {
 //Instance methods
    public List<Summary> getAllSummaries(String symbol);
    public Summary getSummary(int id);
-   public void updateSummary(Summary summary);
+   public boolean updateSummary(Summary summary);
    public boolean deleteSummary(int id);
    public boolean addSummary(Summary summary);
 

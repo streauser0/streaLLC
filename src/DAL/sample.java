@@ -28,6 +28,12 @@ public class sample {
         }
 
         SummaryDao sd = SummaryDaoImpl.getInstance();
+        //int id, String symbol, double fiftyTwoWeekHigh,
+        //double fiftyTwoWeekLow, double pe
+        Summary g = sd.getSummary(6);
+        g.setPe(100);
+
+        sd.updateSummary(g);
 
         Summary s2 = new Summary(0, "CVX", 150, 140, 20);
 
@@ -59,6 +65,8 @@ public class sample {
          summary = sd.getSummary(5);
          System.out.println(summary);
     }
+      
+
 
    
 
