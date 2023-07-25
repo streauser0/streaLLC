@@ -6,6 +6,7 @@
     ],
     "java.project.sourcePaths": [
         "DAL",
-        "Test"
+        "Test",
+        "src"
     ]
 }
