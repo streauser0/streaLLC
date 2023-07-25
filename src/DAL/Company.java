@@ -5,7 +5,7 @@ public class Company {
   
         private String symbol, name, description;
      
-       Company(){}
+       public Company(){}
 
 
 
