@@ -1,6 +1,7 @@
 package Test;
 import DAL.*;
 import static org.junit.Assert.assertEquals;
+import java.util.List;
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 //import example.util.Calculator;
 //import org.junit.jupiter.api.Test;
@@ -13,6 +14,18 @@ public class AppTest {
     @Test
     public void test() {
         assertEquals(2, 1+1);
+    }
+
+
+    @Test
+    public void readDividendTest() {
+        DividendDao dd = DividendDaoImpl.getInstance();
+        List<Dividend> dividends = dd.getAllDividends("AAPL");
+        for (Dividend dividend : dividends) 
+    { 
+        System.out.println(dividend);
+    }
+
     }
 
     @Test
