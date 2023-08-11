@@ -2,6 +2,18 @@ use strea;
 DROP TABLE IF EXISTS strea.Summary;
 DROP TABLE IF EXISTS strea.Company;
 
+CREATE TABLE Dividend (
+    CashAmount decimal(5,2),
+    DeclarationDate datetime,
+    DividendType varchar(50),
+    ExDividendDate datetime NOT NULL,
+    Frequency int,
+    PayDate datetime,
+    RecordDate datetime,
+    Ticker varchar(10) NOT NULL,
+    PRIMARY KEY (Ticker,ExDividendDate)
+);
+
 CREATE TABLE Company (
     Symbol varchar(255) NOT NULL,
     Name varchar(255),

@@ -25,3 +25,22 @@ INSERT INTO Summary ( Symbol, FiftyTwoWeekHigh, FiftytwoWeekLow, PE)
 VALUES ( 'CVX', 190.68, 121.84, 12.08);
 INSERT INTO Summary ( Symbol, FiftyTwoWeekHigh, FiftytwoWeekLow, PE)   
 VALUES ( 'CVX', 200.68, 125.84, 2.08);
+
+INSERT INTO Dividend
+(CashAmount,
+ DeclarationDate,
+ DividendType,
+ ExDividendDate,
+ Frequency,
+ PayDate,
+ RecordDate,
+ Ticker)
+ VALUES
+ (0.22,
+  "2021-10-28",
+  "CD",
+  "2021-11-06",
+  4,
+  "2021-11-11",
+  "2021-11-08",
+  "AAPL");
