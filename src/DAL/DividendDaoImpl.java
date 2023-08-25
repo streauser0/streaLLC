@@ -59,4 +59,52 @@ public class DividendDaoImpl implements DividendDao{
             }
     return dividends;
     }
+
+    //public boolean addDividend(Dividend dividend);
+    @Override
+    public boolean addDividend(Dividend dividend) {
+
+        /*
+INSERT INTO Dividend
+(CashAmount,
+ DeclarationDate,
+ DividendType,
+ ExDividendDate,
+ Frequency,
+ PayDate,
+ RecordDate,
+ Ticker)
+ VALUES
+ (0.22,
+  "2021-10-28",
+  "CD",
+  "2021-11-06",
+  4,
+  "2021-11-11",
+  "2021-11-08",
+  "AAPL");
+        */
+        boolean result = false;
+        try{
+            Statement s = conn.createStatement();
+            String query = "INSERT INTO Dividend (CashAmount, DeclarationDate, DividendType, " +
+            "ExDividendDate, Frequency, PayDate, RecordDate, Ticker)" +
+            "VALUES (" +
+            "'" + dividend.getCashAmount() + "'," +
+                  dividend.getDeclarationDate() + "," +
+                  dividend.getDividendType() + "," +
+                  dividend.getExDividendDate() + "," +
+                  dividend.getFrequency() + "," +
+                  dividend.getPayDate() + "," +
+                  dividend.getRecordDate() + "," +
+                  dividend.getTicker() + ")";
+            s.executeUpdate(query);
+            result = true;
+        }
+        catch(Exception e){
+            System.out.println(e);
+            }
+    return result;
+
+    }  
 }

@@ -2,6 +2,7 @@ package Test;
 import DAL.*;
 import static org.junit.Assert.assertEquals;
 import java.util.List;
+import java.time.LocalDateTime;
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 //import example.util.Calculator;
 //import org.junit.jupiter.api.Test;
@@ -25,7 +26,15 @@ public class AppTest {
     { 
         System.out.println(dividend);
     }
+    }
 
+    @Test
+    public void createDividendTest() {
+        DividendDao dd = DividendDaoImpl.getInstance();
+        Dividend div = new Dividend();
+        div.setTicker("CVX");
+        div.setExDividendDate(LocalDateTime.now());
+        dd.addDividend(div);
     }
 
     @Test
