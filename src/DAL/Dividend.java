@@ -11,7 +11,13 @@ public class Dividend {
         public Dividend() {
             this.cashAmount = 0.0;
             this.dividendType = "";
-            //TODO: Enter remaining value defaults
+            this.ticker = "";
+            this.frequency = 0;
+            this.declarationDate = LocalDateTime.now();
+            this.exDividendDate = LocalDateTime.now();
+            this.payDate = LocalDateTime.now();
+            this.recordDate = LocalDateTime.now();
+            
         }
 
         public Dividend(Double cashAmount, String  dividendType, String ticker,

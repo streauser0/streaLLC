@@ -26,6 +26,7 @@ public class AppTest {
     { 
         System.out.println(dividend);
     }
+    assertEquals(dividends.size(), 1);
     }
 
     @Test
@@ -35,6 +36,8 @@ public class AppTest {
         div.setTicker("CVX");
         div.setExDividendDate(LocalDateTime.now());
         dd.addDividend(div);
+        List<Dividend> dividends = dd.getAllDividends("CVX");
+        assertEquals(dividends.size(), 2);
     }
 
     @Test
