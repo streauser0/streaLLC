@@ -49,7 +49,7 @@ public class DividendDaoImpl implements DividendDao{
                 d.setTicker(rs.getString("Ticker"));
                 d.setCashAmount(rs.getDouble("CashAmount"));
                 d.setExDividendDate(rs.getObject("ExDividendDate", LocalDateTime.class));
-
+                //TODO: Enter remaining attributes
                dividends.add(d);
             }
             
@@ -60,7 +60,6 @@ public class DividendDaoImpl implements DividendDao{
     return dividends;
     }
 
-    //public boolean addDividend(Dividend dividend);
     @Override
     public boolean addDividend(Dividend dividend) {
 
@@ -86,5 +85,22 @@ public class DividendDaoImpl implements DividendDao{
             }
     return result;
 
-    }  
+    }
+
+    @Override
+    public boolean deleteDividends(String ticker) {
+
+        boolean result = false;
+            try{
+                Statement s = conn.createStatement();
+                String query = "DELETE FROM Dividend WHERE Ticker = '" + ticker + "';";
+                s.executeUpdate(query);
+                result = true;
+            }
+            catch(Exception e){
+                System.out.println(e);
+                }
+        return result;
+    }
+
 }

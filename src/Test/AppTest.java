@@ -30,14 +30,17 @@ public class AppTest {
     }
 
     @Test
-    public void createDividendTest() {
+    public void createAndDeleteDividendTest() {
         DividendDao dd = DividendDaoImpl.getInstance();
         Dividend div = new Dividend();
         div.setTicker("CVX");
         div.setExDividendDate(LocalDateTime.now());
         dd.addDividend(div);
         List<Dividend> dividends = dd.getAllDividends("CVX");
-        assertEquals(dividends.size(), 2);
+        assertEquals(dividends.size(), 1);
+        dd.deleteDividends("CVX");
+        dividends = dd.getAllDividends("CVX");
+        assertEquals(dividends.size(), 0);
     }
 
     @Test
