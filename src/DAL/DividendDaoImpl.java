@@ -46,10 +46,14 @@ public class DividendDaoImpl implements DividendDao{
             while(rs.next())
             {
                 Dividend d = new Dividend();
-                d.setTicker(rs.getString("Ticker"));
                 d.setCashAmount(rs.getDouble("CashAmount"));
+                d.setDeclarationDate(rs.getObject("DeclarationDate", LocalDateTime.class));
+                d.setDividendType(rs.getString("DividendType"));
                 d.setExDividendDate(rs.getObject("ExDividendDate", LocalDateTime.class));
-                //TODO: Enter remaining attributes
+                d.setFrequency(rs.getInt("Frequency"));
+                d.setPayDate(rs.getObject("PayDate", LocalDateTime.class));
+                d.setRecordDate(rs.getObject("RecordDate", LocalDateTime.class));
+                d.setTicker(rs.getString("Ticker"));
                dividends.add(d);
             }
             
@@ -58,6 +62,33 @@ public class DividendDaoImpl implements DividendDao{
             System.out.println(e);
             }
     return dividends;
+    }
+
+    @Override
+    public Dividend getDividend(String ticker, LocalDateTime exDividendDate) {
+
+        Dividend dividend = new Dividend();
+        try{
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("select * from dividend " +
+                                            "where Ticker ='" + ticker + "' AND ExDividendDate ='" + exDividendDate + "'");
+
+            if(rs.next())
+            {
+                dividend.setCashAmount(rs.getDouble("CashAmount"));
+                dividend.setDeclarationDate(rs.getObject("DeclarationDate", LocalDateTime.class));
+                dividend.setDividendType(rs.getString("DividendType"));
+                dividend.setExDividendDate(rs.getObject("ExDividendDate", LocalDateTime.class));
+                dividend.setFrequency(rs.getInt("Frequency"));
+                dividend.setPayDate(rs.getObject("PayDate", LocalDateTime.class));
+                dividend.setRecordDate(rs.getObject("RecordDate", LocalDateTime.class));
+                dividend.setTicker(rs.getString("Ticker"));
+            }
+        }
+            catch(Exception e){
+                System.out.println(e);
+                }
+        return dividend;
     }
 
     @Override

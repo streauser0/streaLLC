@@ -8,9 +8,9 @@ public interface DividendDao {
     public List getAllDividends(String ticker);
     public boolean addDividend(Dividend dividend);
     public boolean deleteDividends(String ticker);
+    public Dividend getDividend(String ticker, LocalDateTime exDividendDate);
 
   /* 
-   public Company getDividend(String ticker, LocalDateTime exDividendDate);
    public boolean updateDividend(Dividend dividend);
 */
 

@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 //import example.util.Calculator;
 //import org.junit.jupiter.api.Test;
+import java.time.format.DateTimeFormatter;
 
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class AppTest {
 
 
     @Test
-    public void readDividendTest() {
+    public void readAllDividendsTest() {
         DividendDao dd = DividendDaoImpl.getInstance();
         List<Dividend> dividends = dd.getAllDividends("AAPL");
         for (Dividend dividend : dividends) 
@@ -27,6 +28,16 @@ public class AppTest {
         System.out.println(dividend);
     }
     assertEquals(dividends.size(), 1);
+    }
+
+    @Test
+    public void readDividendTest() {
+        DividendDao dd = DividendDaoImpl.getInstance();
+        String str = "2021-11-05 00:00"; 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); 
+        LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+        Dividend dividend = dd.getDividend("AAPL", dateTime);
+        assertEquals(dividend.getExDividendDate(), dateTime);
     }
 
     @Test
