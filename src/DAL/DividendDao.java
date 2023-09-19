@@ -10,9 +10,9 @@ public interface DividendDao {
     public boolean deleteDividends(String ticker);
     public Dividend getDividend(String ticker, LocalDateTime exDividendDate);
 
-  /* 
+  
    public boolean updateDividend(Dividend dividend);
-*/
+
 
   
 

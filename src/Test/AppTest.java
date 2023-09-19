@@ -41,7 +41,7 @@ public class AppTest {
     }
 
     @Test
-    public void createAndDeleteDividendTest() {
+    public void addGetUpdateDeleteDividendTest() {
         DividendDao dd = DividendDaoImpl.getInstance();
         Dividend div = new Dividend();
         div.setTicker("CVX");
@@ -49,6 +49,14 @@ public class AppTest {
         dd.addDividend(div);
         List<Dividend> dividends = dd.getAllDividends("CVX");
         assertEquals(dividends.size(), 1);
+        
+
+        Dividend div2 = dividends.get(0);
+        div2.setFrequency(1);
+        dd.updateDividend(div2);
+        Dividend div3 = dd.getDividend(div2.getTicker(),div2.getExDividendDate());
+        assertEquals(div2.getFrequency(),div3.getFrequency());
+
         dd.deleteDividends("CVX");
         dividends = dd.getAllDividends("CVX");
         assertEquals(dividends.size(), 0);
@@ -81,4 +89,5 @@ public class AppTest {
 
     }
 
+   
 }
