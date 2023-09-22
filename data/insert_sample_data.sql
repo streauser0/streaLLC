@@ -34,7 +34,7 @@ INSERT INTO Dividend
  Frequency,
  PayDate,
  RecordDate,
- Ticker)
+ Symbo9l)
  VALUES
  (0.22,
   "2021-10-28",
