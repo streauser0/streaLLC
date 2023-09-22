@@ -10,8 +10,8 @@ CREATE TABLE Dividend (
     Frequency int,
     PayDate datetime,
     RecordDate datetime,
-    Ticker varchar(10) NOT NULL,
-    PRIMARY KEY (Ticker,ExDividendDate)
+    Symbol varchar(10) NOT NULL,
+    PRIMARY KEY (Symbol,ExDividendDate)
 );
 
 CREATE TABLE Company (
