@@ -5,10 +5,10 @@ import java.util.List;
 public interface DividendDao {
 //Instance methods
    
-    public List getAllDividends(String ticker);
+    public List getAllDividends(String symbol);
     public boolean addDividend(Dividend dividend);
-    public boolean deleteDividends(String ticker);
-    public Dividend getDividend(String ticker, LocalDateTime exDividendDate);
+    public boolean deleteDividends(String symbol);
+    public Dividend getDividend(String symbol, LocalDateTime exDividendDate);
 
   
    public boolean updateDividend(Dividend dividend);

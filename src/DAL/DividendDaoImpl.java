@@ -36,12 +36,12 @@ public class DividendDaoImpl implements DividendDao{
         return instance;
     }
 
-    public List<Dividend> getAllDividends(String ticker) {
+    public List<Dividend> getAllDividends(String symbol) {
         
         List<Dividend> dividends = new ArrayList<Dividend>();
         try{
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("select * from dividend where ticker = '"+ ticker +"'");
+            ResultSet rs = s.executeQuery("select * from dividend where symbol = '"+ symbol +"'");
             
             while(rs.next())
             {
@@ -53,7 +53,7 @@ public class DividendDaoImpl implements DividendDao{
                 d.setFrequency(rs.getInt("Frequency"));
                 d.setPayDate(rs.getObject("PayDate", LocalDateTime.class));
                 d.setRecordDate(rs.getObject("RecordDate", LocalDateTime.class));
-                d.setTicker(rs.getString("Ticker"));
+                d.setSymbol(rs.getString("symbol"));
                dividends.add(d);
             }
             
@@ -65,13 +65,13 @@ public class DividendDaoImpl implements DividendDao{
     }
 
     @Override
-    public Dividend getDividend(String ticker, LocalDateTime exDividendDate) {
+    public Dividend getDividend(String symbol, LocalDateTime exDividendDate) {
 
         Dividend dividend = new Dividend();
         try{
             Statement s = conn.createStatement();
             ResultSet rs = s.executeQuery("select * from dividend " +
-                                            "where Ticker ='" + ticker + "' AND ExDividendDate ='" + exDividendDate + "'");
+                                            "where symbol ='" + symbol + "' AND ExDividendDate ='" + exDividendDate + "'");
 
             if(rs.next())
             {
@@ -82,7 +82,7 @@ public class DividendDaoImpl implements DividendDao{
                 dividend.setFrequency(rs.getInt("Frequency"));
                 dividend.setPayDate(rs.getObject("PayDate", LocalDateTime.class));
                 dividend.setRecordDate(rs.getObject("RecordDate", LocalDateTime.class));
-                dividend.setTicker(rs.getString("Ticker"));
+                dividend.setSymbol(rs.getString("symbol"));
             }
         }
             catch(Exception e){
@@ -98,7 +98,7 @@ public class DividendDaoImpl implements DividendDao{
         try{
             Statement s = conn.createStatement();
             String query = "INSERT INTO Dividend (CashAmount, DeclarationDate, DividendType, " +
-            "ExDividendDate, Frequency, PayDate, RecordDate, Ticker)" +
+            "ExDividendDate, Frequency, PayDate, RecordDate, symbol)" +
             "VALUES (" +
             + dividend.getCashAmount() + "," +
             "'" + dividend.getDeclarationDate() + "'," +
@@ -107,7 +107,7 @@ public class DividendDaoImpl implements DividendDao{
                   dividend.getFrequency() + "," +
            "'" +  dividend.getPayDate() + "'," +
            "'" +  dividend.getRecordDate() + "'," +
-           "'" +  dividend.getTicker() + "')";
+           "'" +  dividend.getSymbol() + "')";
             s.executeUpdate(query);
             result = true;
         }
@@ -119,12 +119,12 @@ public class DividendDaoImpl implements DividendDao{
     }
 
     @Override
-    public boolean deleteDividends(String ticker) {
+    public boolean deleteDividends(String symbol) {
 
         boolean result = false;
             try{
                 Statement s = conn.createStatement();
-                String query = "DELETE FROM Dividend WHERE Ticker = '" + ticker + "';";
+                String query = "DELETE FROM Dividend WHERE symbol = '" + symbol + "';";
                 s.executeUpdate(query);
                 result = true;
             }
@@ -136,12 +136,12 @@ public class DividendDaoImpl implements DividendDao{
 
     public boolean updateDividend(Dividend dividend) {
       // todo SPENCER
-      // Implement the remaining fields that are updateable and refactor dividend 'ticker' to dividend 'symbol'
+      // Implement the remaining fields that are updateable and refactor dividend 'symbol' to dividend 'symbol'
         boolean result = false;
         try{
             Statement s = conn.createStatement();
             String sql = "UPDATE dividend SET frequency = " + dividend.getFrequency() + 
-            " where ticker = '" + dividend.getTicker() + 
+            " where symbol = '" + dividend.getSymbol() + 
             "' and exdividenddate = '" + dividend.getExDividendDate() + "';";
             s.executeUpdate(sql);
             result = true;

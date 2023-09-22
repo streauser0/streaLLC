@@ -4,14 +4,14 @@ public class Dividend {
     
   
         private Double cashAmount;
-        private String  dividendType, ticker;
+        private String  dividendType, symbol;
         private int frequency;
         private LocalDateTime declarationDate, exDividendDate, payDate, recordDate;
 
         public Dividend() {
             this.cashAmount = 0.0;
             this.dividendType = "";
-            this.ticker = "";
+            this.symbol = "";
             this.frequency = 0;
             this.declarationDate = LocalDateTime.now();
             this.exDividendDate = LocalDateTime.now();
@@ -20,12 +20,12 @@ public class Dividend {
             
         }
 
-        public Dividend(Double cashAmount, String  dividendType, String ticker,
+        public Dividend(Double cashAmount, String  dividendType, String symbol,
                  int frequency, LocalDateTime declarationDate, LocalDateTime exDividendDate ,
                  LocalDateTime payDate , LocalDateTime recordDate ){
          this.cashAmount = cashAmount;
          this.dividendType = dividendType;
-         this.ticker = ticker;
+         this.symbol = symbol;
          this.frequency = frequency;
          this.declarationDate = declarationDate;
          this.exDividendDate = exDividendDate;
@@ -49,12 +49,12 @@ public class Dividend {
             this.dividendType = dividendType;
         }
 
-        public String getTicker() {
-            return this.ticker;
+        public String getSymbol() {
+            return this.symbol;
         }
         
-        public void setTicker(String ticker) {
-            this.ticker = ticker;
+        public void setSymbol(String symbol) {
+            this.symbol = symbol;
         }
 
         public int getFrequency() {
@@ -100,7 +100,7 @@ public class Dividend {
         @Override
         public String toString() {
 
-           String result = this.ticker + "\t" + this.exDividendDate + "\t" + this.cashAmount;
+           String result = this.symbol + "\t" + this.exDividendDate + "\t" + this.cashAmount;
            return result;
 
 
