@@ -136,13 +136,19 @@ public class DividendDaoImpl implements DividendDao{
 
     public boolean updateDividend(Dividend dividend) {
       // todo SPENCER
-      // Implement the remaining fields that are updateable and refactor dividend 'symbol' to dividend 'symbol'
+      // Implement the remaining fields that are updateable: 
+      // dividendtype paydate 
         boolean result = false;
         try{
             Statement s = conn.createStatement();
             String sql = "UPDATE dividend SET frequency = " + dividend.getFrequency() + 
-            " where symbol = '" + dividend.getSymbol() + 
-            "' and exdividenddate = '" + dividend.getExDividendDate() + "';";
+            ", exdividenddate = '"  + dividend.getExDividendDate() + 
+            "',  cashamount = "       + dividend.getCashAmount() +
+            ",  declarationdate = '"  + dividend.getDeclarationDate() +
+           // "',  dividendtype = '"    + dividend.getdividendtype() +
+           // "',  paydate = "         + dividend.getpaydate() +
+            "',  recorddate = '"       + dividend.getRecordDate() + 
+            "' where symbol = '"     + dividend.getSymbol() + "';";
             s.executeUpdate(sql);
             result = true;
         }
