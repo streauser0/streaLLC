@@ -142,13 +142,13 @@ public class DividendDaoImpl implements DividendDao{
         try{
             Statement s = conn.createStatement();
             String sql = "UPDATE dividend SET frequency = " + dividend.getFrequency() + 
-            ", exdividenddate = '"  + dividend.getExDividendDate() + 
+            ", exdividenddate = '"    + dividend.getExDividendDate() + 
             "',  cashamount = "       + dividend.getCashAmount() +
             ",  declarationdate = '"  + dividend.getDeclarationDate() +
-           // "',  dividendtype = '"    + dividend.getdividendtype() +
-           // "',  paydate = "         + dividend.getpaydate() +
-            "',  recorddate = '"       + dividend.getRecordDate() + 
-            "' where symbol = '"     + dividend.getSymbol() + "';";
+            "',  dividendtype = '"    + dividend.getDividendType() +
+            "',  paydate = '"          + dividend.getPayDate() +
+            "',  recorddate = '"      + dividend.getRecordDate() + 
+            "' where symbol = '"      + dividend.getSymbol() + "';";
             s.executeUpdate(sql);
             result = true;
         }

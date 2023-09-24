@@ -52,10 +52,13 @@ public class AppTest {
         
 
         Dividend div2 = dividends.get(0);
-        div2.setFrequency(1);
+        div2.setFrequency(5);
+        div2.setPayDate(LocalDateTime.now());
+        div2.setDividendType("QTR");
         dd.updateDividend(div2);
         Dividend div3 = dd.getDividend(div2.getSymbol(),div2.getExDividendDate());
         assertEquals(div2.getFrequency(),div3.getFrequency());
+        assertEquals(div2.getDividendType(), div3.getDividendType());
 
         dd.deleteDividends("CVX");
         dividends = dd.getAllDividends("CVX");
